@@ -1,0 +1,7 @@
+name: EmailRegister
+version: 0.1
+main: main.java.me.avastprods.emailregister.EmailRegister
+commands:
+  register:
+    description: EmailRegister main command
+softdepend: [Vault]
