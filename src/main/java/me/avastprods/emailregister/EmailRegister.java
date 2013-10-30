@@ -13,14 +13,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class EmailRegister extends JavaPlugin {
 
-	Variables vars = new Variables();
-
 	MySQL sql;
 	Connection connection = null;
 
 	Economy econ = null;
 
-	// public boolean usingEconomy = setupEconomy();
+	public boolean usingEconomy = false;
 
 	public void onEnable() {
 		saveDefaultConfig();
@@ -34,10 +32,15 @@ public class EmailRegister extends JavaPlugin {
 
 		if (!setupEconomy()) {
 			getServer().getConsoleSender().sendMessage("[EmailRegister] " + ChatColor.YELLOW + "Vault dependency not found - monetary rewards disabled.");
+		} else {
+			usingEconomy = true;
 		}
 	}
 
 	public void initConfig() {
+		if (!getConfig().contains("SERVER_NAME"))
+			getConfig().set("SERVER_NAME", "My Server");
+
 		if (!getConfig().contains("email.subject"))
 			getConfig().set("email.subject", "Registration confirmation of %player%");
 		if (!getConfig().contains("email.content"))
@@ -57,7 +60,7 @@ public class EmailRegister extends JavaPlugin {
 			getConfig().set("mysql.pass", "pass");
 		if (!getConfig().contains("mysql.database"))
 			getConfig().set("mysql.database", "database");
-		
+
 		if (!getConfig().contains("item-reward"))
 			getConfig().set("item-reward", Arrays.asList("COOKIE:10", "CAKE:5", "DIAMOND_SWORD:1"));
 		if (!getConfig().contains("money-reward"))
@@ -69,17 +72,19 @@ public class EmailRegister extends JavaPlugin {
 	}
 
 	public void initVars() {
+		Variables.server = getConfig().getString("SERVER_NAME");
+
 		Variables.subject = getConfig().getString("email.subject");
 		Variables.content = getConfig().getString("email.content");
 
 		Variables.fromHost = getConfig().getString("email.from.host");
 		Variables.fromPass = getConfig().getString("email.from.password");
 
-		this.vars.host = getConfig().getString("mysql.host");
-		this.vars.port = getConfig().getString("mysql.port");
-		this.vars.user = getConfig().getString("mysql.user");
-		this.vars.pass = getConfig().getString("mysql.pass");
-		this.vars.database = getConfig().getString("mysql.database");
+		Variables.host = getConfig().getString("mysql.host");
+		Variables.port = getConfig().getString("mysql.port");
+		Variables.user = getConfig().getString("mysql.user");
+		Variables.pass = getConfig().getString("mysql.pass");
+		Variables.database = getConfig().getString("mysql.database");
 	}
 
 	private boolean setupEconomy() {

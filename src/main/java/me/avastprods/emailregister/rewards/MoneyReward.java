@@ -11,9 +11,9 @@ public class MoneyReward {
 	}
 	
 	public double getReward() {
-		/*if(clazz.usingEconomy) {
+		if(clazz.usingEconomy) {
 			return clazz.getConfig().getDouble("money-reward");
-		}*/
+		}
 		
 		return 0;
 	}

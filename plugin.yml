@@ -1,5 +1,5 @@
 name: EmailRegister
-version: 0.1
+version: 0.3
 main: main.java.me.avastprods.emailregister.EmailRegister
 commands:
   register:

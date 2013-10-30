@@ -2,6 +2,8 @@ package main.java.me.avastprods.emailregister;
 
 public class Variables {
 	
+	static String server = null;
+	
 	static String subject = null;
 
 	static String content = null;
@@ -10,16 +12,20 @@ public class Variables {
 
 	static String fromPass = null;
 
-	String host = null;
+	static String host = null;
 
-	String port = null;
+	static String port = null;
 
-	String database = null;
+	static String database = null;
 
-	String user = null;
+	static String user = null;
 
-	String pass = null;
+	static String pass = null;
 
+	public String getServerName() {
+		return server;
+	}
+	
 	public String getSubject() {
 		return subject;
 	}
@@ -37,22 +43,22 @@ public class Variables {
 	}
 
 	public String getHost() {
-		return this.host;
+		return host;
 	}
 
 	public String getPort() {
-		return this.port;
+		return port;
 	}
 
 	public String getDatabase() {
-		return this.database;
+		return database;
 	}
 
 	public String getUser() {
-		return this.user;
+		return user;
 	}
 
 	public String getPass() {
-		return this.pass;
+		return pass;
 	}
 }

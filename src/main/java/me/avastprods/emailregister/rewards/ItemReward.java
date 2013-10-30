@@ -1,7 +1,6 @@
 package main.java.me.avastprods.emailregister.rewards;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import main.java.me.avastprods.emailregister.EmailRegister;
 
@@ -17,8 +16,8 @@ public class ItemReward {
 		this.clazz = instance;
 	}
 	
-	public List<ItemStack> getReward() {
-		List<ItemStack> rewardList = new ArrayList<ItemStack>();
+	public ArrayList<ItemStack> getReward() {
+		ArrayList<ItemStack> rewardList = new ArrayList<ItemStack>();
 
 		for (String item : clazz.getConfig().getStringList("item-reward")) {
 			String[] split = item.split(":");
